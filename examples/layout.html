@@ -1,0 +1,50 @@
+<script src="//cdn.pubnub.com/pubnub.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="../lib/pubstrap-chat.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Watch this amazing video!</h2>
+      <iframe width="100%" height="315" src="//www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-5">
+      <h2>Chat Live</h2>
+			<div id="target">
+			</div>
+   	</div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; Rolling Rick 2014</p>
+  </footer>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$('#target').pubstrapchat({
+	  channel: 'pubstrapchat-randomuserme',
+	  height: '260px',
+	  data_from_session: function(callback) {
+	    $.ajax({
+	      url: "http://api.randomuser.me/",
+	      cache: false
+	    })
+	    .done(function(data) {
+	      callback(data.results[0]);
+	    });
+	  },
+	  id_from_data: function(data) {
+	    return data.seed;
+	  },
+	  username_from_data: function(data) {
+	    return data.user.username;
+	  }
+	});
+});
+</script>
