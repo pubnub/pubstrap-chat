@@ -9,34 +9,45 @@
 <script type="text/javascript">
 function start() {
 
-	$('#target').pubstrapchat({
+  $('#target').pubstrapchat({
+    channel: 'pubstrapchat-facebook',
     data_from_session: function(callback) {
 
-	    FB.api('/me', function(data) {
-	    	callback(data)
-	    });
+      FB.api('/me', function(data) {
+        callback(data)
+      });
 
     },
     data_from_id: function(id, callback){
 
-	    FB.api('/' + id, function(data) {
-	    	callback(data)
-	    });
+      FB.api('/' + id, function(data) {
+        callback(data)
+      });
 
     },
     id_from_data: function(data) {
-    	return data.id;
+      return data.id;
     },
     username_from_data: function(data) {
-    	return data.name;
+      return data.name;
     }
-	});
+  });
 
 }
 </script>
 
 <div id="fb-root"></div>
 <script>
+
+  /*
+
+  This comes right from the tutorial:
+
+  Facebook Login for the Web Using the JavaScript SDK
+  https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
+
+  */
+
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '214943955383451',
