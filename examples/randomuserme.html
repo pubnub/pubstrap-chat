@@ -1,0 +1,31 @@
+<script src="//cdn.pubnub.com/pubnub.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="../lib/pubstrap-chat.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+<div id="target">
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$('#target').pubstrapchat({
+	  channel: 'pubstrapchat-randomuserme',
+	  data_from_session: function(callback) {
+	    $.ajax({
+	      url: "http://api.randomuser.me/",
+	      cache: false
+	    })
+	    .done(function(data) {
+	      callback(data.results[0]);
+	    });
+	  },
+	  id_from_data: function(data) {
+	    return data.seed;
+	  },
+	  username_from_data: function(data) {
+	    return data.user.username;
+	  }
+	});
+});
+</script>
