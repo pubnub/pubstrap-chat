@@ -1,7 +1,7 @@
 Bootstrap Chat Plugin
 ----------
 
-![http://imgur.com/t28hhtl]()
+![](http://i.imgur.com/t28hhtl.png)
 
 ## About
 
