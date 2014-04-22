@@ -79,11 +79,11 @@ By default, users will get a random username like 'Purple Penguin' (color + anim
 
 You can configure PubStrapChat to use a custom user system like your own login system, facebook, twitter, etc. This way you get accurate usernames and ids for your system.
 
-Parameter | Expects | Description
+Parameter | Example | Description
 --- | --- | ---
 data_from_session | ```callback(user_data)``` | A function that identifies the current user. Passes a callback as the only parameter. The callback must be called with the user's session data: ```callback(data)```. More examples below.
-id_from_data | ```return user.id;``` | A function to extract a user's id from the data returned by data_from_session
-username_from_data | ```return user.username``` | A function to extract a user's username from the data returned by data_from_session
+id_from_data | ```return user_data.id;``` | A function to extract a user's id from the data returned by data_from_session
+username_from_data | ```return user_data.username``` | A function to extract a user's username from the data returned by data_from_session
 
 ### Custom user system examples
 
